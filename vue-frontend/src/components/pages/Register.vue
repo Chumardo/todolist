@@ -13,7 +13,11 @@
                         Create Account
                     </h1>
 
-                    <form class="space-y-4 md:space-y-6" action="#">
+                    <form
+                        @submit.prevent="handleRegister"
+                        class="space-y-4 md:space-y-6"
+                        action="#"
+                    >
                         <div>
                             <label
                                 for="name"
@@ -25,6 +29,7 @@
                                 type="name"
                                 name="name"
                                 id="name"
+                                v-model="form.name"
                                 class="bg-gray-50 border border-blue-600 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                 placeholder="Jhon"
                                 required=""
@@ -42,6 +47,7 @@
                                 type="email"
                                 name="email"
                                 id="email"
+                                v-model="form.email"
                                 class="bg-gray-50 border border-blue-600 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                 placeholder="email@example.com"
                                 required=""
@@ -59,6 +65,7 @@
                                 type="password"
                                 name="password"
                                 id="password"
+                                v-model="form.password"
                                 placeholder="••••••••"
                                 class="bg-gray-50 border border-blue-600 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                 required=""
@@ -76,6 +83,7 @@
                                 type="password"
                                 name="password-confirmation"
                                 id="password-confirmation"
+                                v-model="form.password_confirmation"
                                 placeholder="••••••••"
                                 class="bg-gray-50 border border-blue-600 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                 required=""
@@ -106,3 +114,26 @@
         </div>
     </section>
 </template>
+
+<script setup>
+import { ref } from "vue";
+import axios from "axios";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const form = ref({
+    name: "",
+    email: "",
+    password: "",
+    password_confirmation: "",
+});
+const handleRegister = async () => {
+    await axios.post("/register", {
+        name: form.value.name,
+        email: form.value.email,
+        password: form.value.password,
+        password_confirmation: form.value.password_confirmation,
+    });
+    router.push("/");
+};
+</script>
