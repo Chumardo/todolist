@@ -5,9 +5,9 @@ import Login from "../components/pages/Login.vue";
 import Register from "../components/pages/Register.vue";
 
 const routes = [
-    { path: "/", component: Home },
-    { path: "/login", component: Login },
-    { path: "/register", component: Register },
+    { path: "/", name: "Home", component: Home },
+    { path: "/login", name: "Login", component: Login },
+    { path: "/register", name: "Register", component: Register },
 ];
 
 const router = createRouter({
