@@ -14,6 +14,11 @@
                         >Todo list</span
                     >
                 </router-link>
+                <div v-if="authStore.user">
+                    <h1 class="text-blue-400 font-bold">
+                        {{ authStore.user.name }}
+                    </h1>
+                </div>
                 <div
                     v-if="!authStore.user"
                     class="flex items-center lg:order-2"
