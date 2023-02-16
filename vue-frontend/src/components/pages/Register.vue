@@ -14,7 +14,7 @@
                     </h1>
 
                     <form
-                        @submit.prevent="handleRegister"
+                        @submit.prevent="authStore.handleRegister(form)"
                         class="space-y-4 md:space-y-6"
                         action="#"
                     >
@@ -117,23 +117,14 @@
 
 <script setup>
 import { ref } from "vue";
-import axios from "axios";
-import { useRouter } from "vue-router";
+import { useAuthStore } from "../../stores/auth";
 
-const router = useRouter();
+const authStore = useAuthStore();
+
 const form = ref({
     name: "",
     email: "",
     password: "",
     password_confirmation: "",
 });
-const handleRegister = async () => {
-    await axios.post("/register", {
-        name: form.value.name,
-        email: form.value.email,
-        password: form.value.password,
-        password_confirmation: form.value.password_confirmation,
-    });
-    router.push("/");
-};
 </script>
