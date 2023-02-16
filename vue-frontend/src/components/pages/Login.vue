@@ -13,7 +13,7 @@
                         Log In
                     </h1>
                     <form
-                        @submit.prevent="handleLogin"
+                        @submit.prevent="authStore.handleLogin(form)"
                         class="space-y-4 md:space-y-6"
                         action="#"
                     >
@@ -94,24 +94,12 @@
 
 <script setup>
 import { ref } from "vue";
-import axios from "axios";
-import { useRouter } from "vue-router";
-const router = useRouter();
+import { useAuthStore } from "../../stores/auth";
+
+const authStore = useAuthStore();
+
 const form = ref({
     email: "",
     password: "",
 });
-
-const getToken = async () => {
-    await axios.get("/sanctum/csrf-cookie");
-};
-
-const handleLogin = async () => {
-    await getToken();
-    await axios.post("/login", {
-        email: form.value.email,
-        password: form.value.password,
-    });
-    router.push("/");
-};
 </script>
