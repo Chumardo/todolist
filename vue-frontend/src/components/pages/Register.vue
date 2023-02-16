@@ -34,6 +34,11 @@
                                 placeholder="Jhon"
                                 required=""
                             />
+                            <div v-if="authStore.errors.name" class="flex">
+                                <span class="text-red-400 text-sm pt-2">{{
+                                    authStore.errors.name[0]
+                                }}</span>
+                            </div>
                         </div>
 
                         <div>
@@ -52,6 +57,11 @@
                                 placeholder="email@example.com"
                                 required=""
                             />
+                            <div v-if="authStore.errors.email" class="flex">
+                                <span class="text-red-400 text-sm pt-2">{{
+                                    authStore.errors.email[0]
+                                }}</span>
+                            </div>
                         </div>
 
                         <div>
@@ -70,6 +80,11 @@
                                 class="bg-gray-50 border border-blue-600 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                 required=""
                             />
+                            <div v-if="authStore.errors.password" class="flex">
+                                <span class="text-red-400 text-sm pt-2">{{
+                                    authStore.errors.password[0]
+                                }}</span>
+                            </div>
                         </div>
 
                         <div>
@@ -88,6 +103,14 @@
                                 class="bg-gray-50 border border-blue-600 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                 required=""
                             />
+                            <div
+                                v-if="authStore.errors.password_confirmation"
+                                class="flex"
+                            >
+                                <span class="text-red-400 text-sm pt-2">{{
+                                    authStore.errors.password_confirmation[0]
+                                }}</span>
+                            </div>
                         </div>
 
                         <div class="pt-4">
