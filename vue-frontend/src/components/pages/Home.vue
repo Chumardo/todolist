@@ -21,12 +21,12 @@
                             class="border-solid border-4 border-blue-400 rounded-lg"
                         >
                             <div
-                                class="flex flex-col text-white border-solid border-y-2 border-blue-400"
+                                class="flex flex-col text-white border-solid border-y-2 border-blue-400 divide-blue-400 divide-y-4"
                             >
                                 <div
                                     v-for="item in items"
                                     :key="item.id"
-                                    class="flex justify-between items-center m-3"
+                                    class="flex justify-between items-center p-3"
                                 >
                                     <label
                                         :for="item.id"
