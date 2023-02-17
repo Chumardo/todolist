@@ -30,15 +30,26 @@
                                 >
                                     <label
                                         :for="item.id"
-                                        class="ml-2 text-xl pr-5 font-medium capitalize text-white-900 dark:text-white-300 md:text-2xl hover:cursor-pointer"
+                                        :class="[
+                                            item.completed
+                                                ? 'line-through text-green-500'
+                                                : '',
+                                            'ml-2 text-xl pr-5 font-medium capitalize text-white-900 dark:text-white-300 md:text-2xl hover:cursor-pointer',
+                                        ]"
                                     >
                                         {{ item.title }}
                                     </label>
                                     <input
                                         :id="item.id"
                                         type="checkbox"
-                                        value=""
+                                        v-model="item.completed"
                                         class="w-4 h-4 text-blue-600 bg-white-100 border-white-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                        @change="
+                                            itemStore.updateCheck(
+                                                item.id,
+                                                item.completed
+                                            )
+                                        "
                                     />
                                 </div>
                             </div>
