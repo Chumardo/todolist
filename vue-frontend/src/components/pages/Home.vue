@@ -39,18 +39,23 @@
                                     >
                                         {{ item.title }}
                                     </label>
-                                    <input
-                                        :id="item.id"
-                                        type="checkbox"
-                                        v-model="item.completed"
-                                        class="w-4 h-4 text-blue-600 bg-white-100 border-white-300 rounded focus:ring-blue-500"
-                                        @change="
-                                            itemStore.updateCheck(
-                                                item.id,
-                                                item.completed
-                                            )
-                                        "
-                                    />
+                                    <div
+                                        class="flex items-center gap-2 justify-bteween"
+                                    >
+                                        <input
+                                            :id="item.id"
+                                            type="checkbox"
+                                            v-model="item.completed"
+                                            class="w-4 h-4 text-blue-600 bg-white-100 border-white-300 rounded focus:ring-blue-500"
+                                            @change="
+                                                itemStore.updateCheck(
+                                                    item.id,
+                                                    item.completed
+                                                )
+                                            "
+                                        />
+                                        <button>Delete</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
