@@ -17,17 +17,23 @@
                         >
                             Todo List
                         </h1>
-                        <form class="flex items-center pb-3 pl-3 pr-3">
+                        <form
+                            @submit.prevent="updateList(form)"
+                            class="flex items-center pb-3 pl-3 pr-3"
+                        >
                             <input
                                 class="appearance-none bg-white border-none w-full text-bkac mr-3 py-1 px-2 leading-tight focus:outline-none"
                                 type="text"
+                                v-model="form.title"
                                 placeholder="New Todo"
                             />
-                            <font-awesome-icon
-                                icon="plus-square"
-                                id="plus-square"
-                                class="h-8"
-                            />
+                            <button type="submit" class="pt-1">
+                                <font-awesome-icon
+                                    icon="plus-square"
+                                    id="plus-square"
+                                    class="h-8"
+                                />
+                            </button>
                         </form>
                         <div v-if="items.length <= 0">
                             <h1 class="text-red-300">
@@ -96,6 +102,7 @@
 
 <script setup>
 import { onMounted } from "vue";
+import { ref } from "vue";
 import { useAuthStore } from "../../stores/auth";
 import { useItemStore } from "../../stores/item";
 
@@ -105,9 +112,18 @@ const itemStore = useItemStore();
 
 const items = itemStore.items;
 
+const form = ref({
+    title: "",
+});
+
 onMounted(async () => {
     await authStore.getUser();
 });
+
+function updateList(form) {
+    itemStore.addItem(form);
+    form.title = "";
+}
 </script>
 
 <style scoped>

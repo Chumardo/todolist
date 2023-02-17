@@ -21,5 +21,12 @@ export const useItemStore = defineStore("item", {
                 }
             }
         },
+        addItem(form) {
+            this.items.push({
+                id: this.items.length + 1,
+                title: form.title,
+                completed: false,
+            });
+        },
     },
 });
