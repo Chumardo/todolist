@@ -17,6 +17,18 @@
                         >
                             Todo List
                         </h1>
+                        <form class="flex items-center pb-3 pl-3 pr-3">
+                            <input
+                                class="appearance-none bg-white border-none w-full text-bkac mr-3 py-1 px-2 leading-tight focus:outline-none"
+                                type="text"
+                                placeholder="New Todo"
+                            />
+                            <font-awesome-icon
+                                icon="plus-square"
+                                id="plus-square"
+                                class="h-8"
+                            />
+                        </form>
                         <div
                             class="border-solid border-4 border-blue-400 rounded-lg"
                         >
@@ -90,5 +102,9 @@ onMounted(async () => {
 <style scoped>
 .fa-trash {
     color: red;
+}
+
+#plus-square {
+    color: rgb(0, 255, 0);
 }
 </style>

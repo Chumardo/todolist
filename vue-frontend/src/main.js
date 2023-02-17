@@ -8,11 +8,11 @@ import App from "./App.vue";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(faTrash);
+library.add(faTrash, faPlusSquare);
 
 const pinia = createPinia();
 
