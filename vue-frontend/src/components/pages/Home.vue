@@ -29,7 +29,13 @@
                                 class="h-8"
                             />
                         </form>
+                        <div v-if="items.length <= 0">
+                            <h1 class="text-red-300">
+                                There is nothing, add new Todo
+                            </h1>
+                        </div>
                         <div
+                            v-if="items.length > 0"
                             class="border-solid border-4 border-blue-400 rounded-lg"
                         >
                             <div
@@ -66,7 +72,12 @@
                                                 )
                                             "
                                         />
-                                        <button class="fa-trash">
+                                        <button
+                                            @click="
+                                                itemStore.deleteItem(item.id)
+                                            "
+                                            class="fa-trash"
+                                        >
                                             <font-awesome-icon
                                                 icon="fa-trash"
                                                 id="fa-trash"
