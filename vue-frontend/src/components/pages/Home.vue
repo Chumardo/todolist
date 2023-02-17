@@ -54,7 +54,12 @@
                                                 )
                                             "
                                         />
-                                        <button>Delete</button>
+                                        <button class="fa-trash">
+                                            <font-awesome-icon
+                                                icon="fa-trash"
+                                                id="fa-trash"
+                                            />
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -81,3 +86,9 @@ onMounted(async () => {
     await authStore.getUser();
 });
 </script>
+
+<style scoped>
+.fa-trash {
+    color: red;
+}
+</style>

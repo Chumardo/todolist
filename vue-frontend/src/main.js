@@ -6,6 +6,14 @@ import "./axios";
 import "./style.css";
 import App from "./App.vue";
 
+import { library } from "@fortawesome/fontawesome-svg-core";
+
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
+library.add(faTrash);
+
 const pinia = createPinia();
 
 pinia.use(({ store }) => {
@@ -14,6 +22,7 @@ pinia.use(({ store }) => {
 
 const app = createApp(App);
 
+app.component("font-awesome-icon", FontAwesomeIcon);
 app.use(pinia);
 app.use(router);
 
