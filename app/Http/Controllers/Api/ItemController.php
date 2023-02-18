@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Item as ItemResource;
+use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -11,9 +13,9 @@ class ItemController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index()
     {
-        //
+        return new ItemResource(Item::all());
     }
 
     /**
