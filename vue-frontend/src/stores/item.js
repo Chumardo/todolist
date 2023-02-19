@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import axios from "axios";
 
 export const useItemStore = defineStore("item", {
     state: () => ({
@@ -27,6 +28,9 @@ export const useItemStore = defineStore("item", {
                 title: form.title,
                 completed: false,
             });
+        },
+        async getItems() {
+            return (await axios.get("/api/items")).data.data;
         },
     },
 });

@@ -3,6 +3,7 @@
         <div v-if="authStore.user">
             <h1 class="text-white">Name: {{ authStore.user.name }}</h1>
             <h1 class="text-white">Email: {{ authStore.user.email }}</h1>
+            <div>{{ apiItems }}</div>
         </div>
         <div v-else>
             <div
@@ -111,6 +112,7 @@ const authStore = useAuthStore();
 const itemStore = useItemStore();
 
 const items = itemStore.items;
+let apiItems = [];
 
 const form = ref({
     title: "",
@@ -118,6 +120,10 @@ const form = ref({
 
 onMounted(async () => {
     await authStore.getUser();
+});
+
+onMounted(async () => {
+    apiItems = await itemStore.getItems();
 });
 
 function updateList(form) {
