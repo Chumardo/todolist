@@ -159,7 +159,7 @@
                                     "
                                 />
                                 <button
-                                    @click="itemStore.deleteItem(item.id)"
+                                    @click="itemStore.deleteApiItem(item.id)"
                                     class="fa-trash"
                                 >
                                     <font-awesome-icon

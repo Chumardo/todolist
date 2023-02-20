@@ -39,5 +39,9 @@ export const useItemStore = defineStore("item", {
             });
             this.router.go(0);
         },
+        async deleteApiItem(id) {
+            await axios.delete("api/items/" + id);
+            this.router.go(0);
+        },
     },
 });
