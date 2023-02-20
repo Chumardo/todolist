@@ -32,5 +32,12 @@ export const useItemStore = defineStore("item", {
         async getItems() {
             return (await axios.get("/api/items")).data.data;
         },
+        async addApiItem(data) {
+            await axios.post("api/items", {
+                title: data.title,
+                user_id: data.user_id,
+            });
+            this.router.go(0);
+        },
     },
 });

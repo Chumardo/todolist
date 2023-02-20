@@ -21,9 +21,14 @@ class ItemController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): Response
+    public function store(Request $request)
     {
-        //
+        $item = new Item();
+        $item->title = $request->title;
+        $item->user_id = $request->user_id;
+        $item->save();
+
+        return new ItemResource($item);
     }
 
     /**

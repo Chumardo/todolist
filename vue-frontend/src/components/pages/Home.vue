@@ -1,10 +1,10 @@
 <template>
     <div>
         <div v-if="authStore.user">
-            <TodoListCard :data="apiItems" />
+            <TodoListCard :data="apiItems" :example="false" />
         </div>
         <div v-else>
-            <TodoListCard :data="exampleItems" />
+            <TodoListCard :data="exampleItems" :example="true" />
         </div>
     </div>
 </template>
