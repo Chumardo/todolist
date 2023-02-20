@@ -135,7 +135,7 @@
                             <label
                                 :for="item.id"
                                 :class="[
-                                    item.completed
+                                    item.status
                                         ? 'line-through text-green-500'
                                         : '',
                                     'ml-2 text-xl pr-5 text-start font-medium capitalize text-white-900 md:text-2xl hover:cursor-pointer',
@@ -149,13 +149,11 @@
                                 <input
                                     :id="item.id"
                                     type="checkbox"
-                                    v-model="item.completed"
+                                    :checked="item.status"
+                                    v-model="status"
                                     class="w-4 h-4 text-blue-600 bg-white-100 border-white-300 rounded focus:ring-blue-500"
                                     @change="
-                                        itemStore.updateCheck(
-                                            item.id,
-                                            item.completed
-                                        )
+                                        itemStore.updateStatus(status, item.id)
                                     "
                                 />
                                 <button
